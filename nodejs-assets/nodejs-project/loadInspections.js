@@ -12,7 +12,7 @@ const token =
 
 rn_bridge.channel.on('message', async msg => {
   try {
-    const results;
+    const results = [];
     for (let i = 0; i < TOTAL_PAGE; i++) {
       const response = await fetch(
         `https://us-staging-api.hammertechonline.com/api/v1/inspections?skip=${
@@ -26,7 +26,7 @@ rn_bridge.channel.on('message', async msg => {
         },
       );
       const jsonResponse = await response.json();
-      results.push(jsonResponse)
+      results.push(jsonResponse);
       console.log({i});
     }
     rn_bridge.channel.send(results);
