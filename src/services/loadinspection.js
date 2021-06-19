@@ -6,6 +6,7 @@ const token =
 
 export const loadInspection = async () => {
   try {
+    const results;
     for (let i = 0; i < TOTAL_PAGE; i++) {
       const response = await fetch(
         `https://us-staging-api.hammertechonline.com/api/v1/inspections?skip=${
@@ -19,8 +20,10 @@ export const loadInspection = async () => {
         },
       );
       const jsonResponse = await response.json();
-      return jsonResponse;
+      results.push(jsonResponse)
     }
+    return results;
+
   } catch (e) {
     console.log(e);
   }
