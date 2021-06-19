@@ -6,64 +6,28 @@
  * @flow strict-local
  */
 
-import React, {useEffect} from 'react';
-import type {Node} from 'react';
+import nodejs from 'nodejs-mobile-react-native';
+import React from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import nodejs from 'nodejs-mobile-react-native';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
 class App extends React.Component {
-  // componentWillMount() {
-  //   nodejs.start('main.js');
-  //   nodejs.channel.addListener(
-  //     'message',
-  //     msg => {
-  //       alert('From node: ' + msg);
-  //     },
-  //     this,
-  //   );
-  // }
+  componentDidMount() {
+    nodejs.start('loadNews.js');
+    nodejs.channel.addListener(
+      'message',
+      msg => {
+        alert(msg);
+      },
+      this,
+    );
+  }
 
   render() {
     const isDarkMode = true;
@@ -73,25 +37,11 @@ class App extends React.Component {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={{flex: 1}}>
-          <Header />
-          <View
-            style={{
-              backgroundColor: !isDarkMode ? Colors.black : Colors.white,
-            }}>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.js</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="See Your Changes">
-              <ReloadInstructions />
-            </Section>
-            <Section title="Debug">
-              <DebugInstructions />
-            </Section>
-            <Section title="Learn More">
-              Read the docs to discover what to do next:
-            </Section>
-            <LearnMoreLinks />
+          <View>
+            <Button
+              title="Load Data"
+              onPress={() => nodejs.channel.send('starting fetch API data')}
+            />
           </View>
         </ScrollView>
       </SafeAreaView>
