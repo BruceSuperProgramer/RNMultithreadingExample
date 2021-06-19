@@ -25,10 +25,10 @@ rn_bridge.channel.on('message', async msg => {
         },
       );
       const jsonResponse = await response.json();
-      console.log({jsonResponse});
+      console.log({i});
     }
 
-    rn_bridge.channel.send(`API finished`);
+    rn_bridge.channel.send(jsonResponse);
   } catch (e) {
     console.log(e);
   }
