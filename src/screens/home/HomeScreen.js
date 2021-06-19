@@ -1,39 +1,26 @@
 import React from 'react';
-import {Button, SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
-import realm from '../../persistors/realm/realm';
-import nodejs from 'nodejs-mobile-react-native';
-import {loadInspection} from '../../services/loadinspection';
+import {Button, SafeAreaView, StatusBar, View} from 'react-native';
 
 class HomeScreen extends React.Component {
-  componentDidMount() {
-    nodejs.start('loadInspections.js');
-    nodejs.channel.addListener(
-      'message',
-      msg => {
-        alert(msg);
-      },
-      this,
-    );
-
-    console.log('realm.path:', realm.path);
-  }
-
   render() {
     const isDarkMode = true;
+    const {onLoadDataFromWorkerPress, onLoadDataFromMainThreadrPress} =
+      this.props;
+
     return (
       <SafeAreaView style={{flex: 1}}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <View style={{marginTop: 100}}>
           <Button
             title="Load Data via worker"
-            onPress={() => nodejs.channel.send('starting fetch API data')}
+            onPress={onLoadDataFromWorkerPress}
           />
         </View>
 
         <View style={{marginTop: 200}}>
           <Button
             title="Load Data via main thread"
-            onPress={() => loadInspection()}
+            onPress={onLoadDataFromMainThreadrPress}
           />
         </View>
 

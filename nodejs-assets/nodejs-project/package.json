@@ -11,5 +11,8 @@
   "license": "",
   "dependencies": {
     "node-fetch": "^2.6.1"
+  },
+  "peerDependencies": {
+    "realm": "^10.4.2"
   }
 }

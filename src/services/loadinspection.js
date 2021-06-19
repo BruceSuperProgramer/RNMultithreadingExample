@@ -6,21 +6,32 @@ const token =
 
 export const loadInspection = async () => {
   try {
-    for (let i = 0; i < TOTAL_PAGE; i++) {
-      const response = await fetch(
-        `https://us-staging-api.hammertechonline.com/api/v1/inspections?skip=${
-          i * take
-        }&take=100`,
-        {
-          method: 'get',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      const jsonResponse = await response.json();
-      return jsonResponse;
+    // for (let i = 0; i < TOTAL_PAGE; i++) {
+    //   const response = await fetch(
+    //     `https://us-staging-api.hammertechonline.com/api/v1/inspections?skip=${
+    //       i * take
+    //     }&take=100`,
+    //     {
+    //       method: 'get',
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     },
+    //   );
+
+    //   let jsonResponse = await response.json();
+
+    //   jsonResponse = JSON.parse(JSON.stringify(jsonResponse));
+    //   console.log({i});
+    // }
+
+    let i = 10000000;
+    while (true) {
+      i += i;
+      console.log({i});
     }
+
+    return [];
   } catch (e) {
     console.log(e);
   }

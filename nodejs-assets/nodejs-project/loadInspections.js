@@ -1,10 +1,10 @@
 // Rename this sample file to main.js to use on your project.
 // The main.js file will be overwritten in updates/reinstalls.
-const fetch = require('node-fetch');
 
+const fetch = require('node-fetch');
 var rn_bridge = require('rn-bridge');
 
-const TOTAL_PAGE = 1;
+const TOTAL_PAGE = 100;
 const take = 100;
 
 const token =
@@ -12,23 +12,28 @@ const token =
 
 rn_bridge.channel.on('message', async msg => {
   try {
-    for (let i = 0; i < TOTAL_PAGE; i++) {
-      const response = await fetch(
-        `https://us-staging-api.hammertechonline.com/api/v1/inspections?skip=${
-          i * take
-        }&take=100`,
-        {
-          method: 'get',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      const jsonResponse = await response.json();
+    // for (let i = 0; i < TOTAL_PAGE; i++) {
+    //   const response = await fetch(
+    //     `https://us-staging-api.hammertechonline.com/api/v1/inspections?skip=${
+    //       i * take
+    //     }&take=100`,
+    //     {
+    //       method: 'get',
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     },
+    //   );
+    //   const jsonResponse = await response.json();
+    //   console.log({i});
+    //   rn_bridge.channel.send(jsonResponse);
+    // }
+
+    let i = 10000000;
+    while (true) {
+      i += i;
       console.log({i});
     }
-
-    rn_bridge.channel.send(jsonResponse);
   } catch (e) {
     console.log(e);
   }
