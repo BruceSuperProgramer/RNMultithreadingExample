@@ -12,6 +12,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		5CE8D507267E658600F5EE3B /* wmelon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8D506267E658600F5EE3B /* wmelon.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A431DB5B20E5CA162DBEC1C5 /* libPods-MultithreadTestApp-MultithreadTestAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEF932390D4ADC1FA7EEA1B /* libPods-MultithreadTestApp-MultithreadTestAppTests.a */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MultithreadTestApp/main.m; sourceTree = "<group>"; };
 		39B4AE697384004D766B3EC3 /* Pods-MultithreadTestApp-MultithreadTestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultithreadTestApp-MultithreadTestAppTests.release.xcconfig"; path = "Target Support Files/Pods-MultithreadTestApp-MultithreadTestAppTests/Pods-MultithreadTestApp-MultithreadTestAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		495F73AA42B5E41AA2153DAF /* Pods-MultithreadTestApp-MultithreadTestAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultithreadTestApp-MultithreadTestAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MultithreadTestApp-MultithreadTestAppTests/Pods-MultithreadTestApp-MultithreadTestAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5CE8D505267E658600F5EE3B /* MultithreadTestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultithreadTestApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		5CE8D506267E658600F5EE3B /* wmelon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wmelon.swift; sourceTree = "<group>"; };
 		646D37E8019255FA828D1960 /* libPods-MultithreadTestApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MultithreadTestApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEF932390D4ADC1FA7EEA1B /* libPods-MultithreadTestApp-MultithreadTestAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MultithreadTestApp-MultithreadTestAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MultithreadTestApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -116,12 +119,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				5CE8D506267E658600F5EE3B /* wmelon.swift */,
 				13B07FAE1A68108700A75B9A /* MultithreadTestApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MultithreadTestAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				F51A6E96C81C5FF35E479770 /* Pods */,
+				5CE8D505267E658600F5EE3B /* MultithreadTestApp-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -145,7 +150,6 @@
 				495F73AA42B5E41AA2153DAF /* Pods-MultithreadTestApp-MultithreadTestAppTests.debug.xcconfig */,
 				39B4AE697384004D766B3EC3 /* Pods-MultithreadTestApp-MultithreadTestAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -212,7 +216,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -457,6 +461,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				5CE8D507267E658600F5EE3B /* wmelon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 495F73AA42B5E41AA2153DAF /* Pods-MultithreadTestApp-MultithreadTestAppTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -502,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39B4AE697384004D766B3EC3 /* Pods-MultithreadTestApp-MultithreadTestAppTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = MultithreadTestAppTests/Info.plist;
@@ -542,6 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MultithreadTestApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "MultithreadTestApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -567,6 +575,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MultithreadTestApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "MultithreadTestApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
