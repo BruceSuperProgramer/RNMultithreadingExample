@@ -1,10 +1,10 @@
 // Rename this sample file to main.js to use on your project.
 // The main.js file will be overwritten in updates/reinstalls.
-const fetch = require('node-fetch');
 
+const fetch = require('node-fetch');
 var rn_bridge = require('rn-bridge');
 
-const TOTAL_PAGE = 1;
+const TOTAL_PAGE = 100;
 const take = 100;
 
 const token =

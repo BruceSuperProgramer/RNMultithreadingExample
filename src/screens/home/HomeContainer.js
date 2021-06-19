@@ -9,9 +9,7 @@ class HomeContainer extends React.Component {
   componentDidMount() {
     console.log('realm.path:', realm.path);
     nodejs.start('loadInspections.js');
-    nodejs.channel.addListener('message', result => {
-      
-    }, this);
+    nodejs.channel.addListener('message', result => {}, this);
   }
 
   onLoadDataFromWorkerPress = () => {
