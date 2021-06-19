@@ -19,7 +19,7 @@ import {
 
 class App extends React.Component {
   componentDidMount() {
-    nodejs.start('loadNews.js');
+    nodejs.start('loadInspections.js');
     nodejs.channel.addListener(
       'message',
       msg => {
