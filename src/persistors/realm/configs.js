@@ -1,21 +1,24 @@
 import {InspectionSchema} from './models/inspection';
+import {InspectionIssueSchema} from './models/inspectionIssue';
+import {InspectionAttendeeSchema} from './models/inspectionAttendee';
+import {InspectionChecklistsSchema} from './models/inspectionChecklists';
+import {CommentSchema} from './models/comment';
+import {UserSchema} from './models/user';
+import {FileSchema} from './models/file';
 
 export const connectionString = 'MultiThreadApp.realm';
 
-export const key = new Int8Array(64);
-
 export const databaseOptions = {
   path: connectionString,
-  schema: [InspectionSchema],
+  schema: [
+    InspectionSchema,
+    InspectionIssueSchema,
+    InspectionAttendeeSchema,
+    InspectionChecklistsSchema,
+    CommentSchema,
+    UserSchema,
+    FileSchema,
+  ],
   schemaVersion: 1,
   deleteRealmIfMigrationNeeded: true,
-  // encryptionKey: key,
-  // migration: (oldRealm, newRealm) => {
-  //   if (oldRealm.schemaVersion < 1) {
-  //     const oldObjects = oldRealm.objects(InspectionSchema);
-  //     for (let i = 0; i < oldObjects.length; i++) {
-  //       oldRealm.delete(oldObjects[i]);
-  //     }
-  //   }
-  // },
 };

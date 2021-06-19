@@ -1,22 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import nodejs from 'nodejs-mobile-react-native';
 import React from 'react';
-import {
-  Button,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
-import realm from './src/persistors/realm/realm';
+import {Button, SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
+import nodejs from 'nodejs-mobile-react-native';
 
 class App extends React.Component {
   componentDidMount() {
@@ -49,7 +33,5 @@ class App extends React.Component {
     );
   }
 }
-
-console.log(realm);
 
 export default App;
