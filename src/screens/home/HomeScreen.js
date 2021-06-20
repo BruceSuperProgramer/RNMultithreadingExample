@@ -3,17 +3,9 @@ import {Button, SafeAreaView, View} from 'react-native';
 
 class HomeScreen extends React.Component {
   render() {
-    const {onLoadDataFromMainThreadrPress, onLoadDataFromWorkerPress} =
-      this.props;
+    const {onLoadDataFromMainThreadrPress} = this.props;
     return (
       <SafeAreaView style={{flex: 1}}>
-        <View style={{marginTop: 100}}>
-          <Button
-            title="Load Data via worker"
-            onPress={onLoadDataFromWorkerPress}
-          />
-        </View>
-
         <View style={{marginTop: 200}}>
           <Button
             title="Load Data via main thread"

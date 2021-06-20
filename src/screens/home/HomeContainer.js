@@ -1,6 +1,5 @@
 import React from 'react';
 import realm from '../../persistors/realm/realm';
-import nodejs from 'nodejs-mobile-react-native';
 import {loadInspection} from '../../services/loadinspection';
 import HomeScreen from './HomeScreen';
 import {
@@ -9,22 +8,6 @@ import {
 } from '../../persistors/realm/services/inspection';
 
 class HomeContainer extends React.Component {
-  componentDidMount() {
-    console.log('realm.path:', realm.path);
-    nodejs.start('loadInspections.js');
-    nodejs.channel.addListener(
-      'message',
-      inspections => {
-        createInspections(inspections);
-      },
-      this,
-    );
-  }
-
-  onLoadDataFromWorkerPress = () => {
-    nodejs.channel.send('starting fetch API data');
-  };
-
   onLoadDataFromMainThreadrPress = async () => {
     try {
       const inspections = await loadInspection();
@@ -49,7 +32,6 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <HomeScreen
-        onLoadDataFromWorkerPress={this.onLoadDataFromWorkerPress}
         onLoadDataFromMainThreadrPress={this.onLoadDataFromMainThreadrPress}
       />
     );
