@@ -1,12 +1,12 @@
 import React from 'react';
-import nodejs from 'nodejs-mobile-react-native';
+// import nodejs from 'nodejs-mobile-react-native';
 import HomeScreen from './HomeScreen';
 
 class HomeContainer extends React.Component {
-  componentDidMount() {
-    nodejs.start('loadInspections.js');
-    nodejs.channel.addListener('message', inspections => {}, this);
-  }
+  // componentDidMount() {
+  //   nodejs.start('loadInspections.js');
+  //   nodejs.channel.addListener('message', inspections => {}, this);
+  // }
 
   onLoadDataFromWorkerPress = () => {
     nodejs.channel.send('starting fetch API data');

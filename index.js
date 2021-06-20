@@ -11,7 +11,7 @@ import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
 
 import schema from './src/model/schema';
 import migrations from './src/model/migrations';
-// import Post from './model/Post' // ⬅️ You'll import your Models here
+import Inspection from './src/model/inspection'; // ⬅️ You'll import your Models here
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({
@@ -32,10 +32,21 @@ const adapter = new SQLiteAdapter({
 // Then, make a Watermelon database from it!
 const database = new Database({
   adapter,
-  modelClasses: [
-    // Post, // ⬅️ You'll add Models to Watermelon here
-  ],
+  modelClasses: [Inspection],
   actionsEnabled: true,
 });
+
+if (__DEV__) {
+  // Import connectDatabases function
+  const connectDatabases = require('react-native-flipper-databases').default;
+
+  // Import required DBDrivers
+  const WatermelonDBDriver =
+    require('react-native-flipper-databases/src/drivers/watermelondb').default;
+
+  connectDatabases([
+    new WatermelonDBDriver(database), // Pass in database definition
+  ]);
+}
 
 AppRegistry.registerComponent(appName, () => App);
