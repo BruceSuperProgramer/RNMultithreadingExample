@@ -8,6 +8,10 @@ import {
 } from '../../persistors/realm/services/inspection';
 
 class HomeContainer extends React.Component {
+  componentDidMount() {
+    console.log('realm.path:', realm.path);
+  }
+
   onLoadDataFromMainThreadrPress = async () => {
     try {
       const inspections = await loadInspection();
