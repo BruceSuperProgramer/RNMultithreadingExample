@@ -6,15 +6,6 @@ import {database} from '../../database';
 import {spawnThread} from 'react-native-multithreading';
 
 class HomeContainer extends React.Component {
-  componentDidMount() {
-    nodejs.start('loadInspections.js');
-    nodejs.channel.addListener('message', inspections => {}, this);
-  }
-
-  onLoadDataFromWorkerPress = () => {
-    nodejs.channel.send('starting fetch API data');
-  };
-
   onLoadDataFromMainThreadrPress = async () => {
     try {
       const inspections = await loadInspection();
