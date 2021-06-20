@@ -1,7 +1,7 @@
 import React from 'react';
 import nodejs from 'nodejs-mobile-react-native';
 import HomeScreen from './HomeScreen';
-import {createInspection} from '../../modelAction/inspection';
+import {createInspections} from '../../modelAction/inspection';
 import {loadInspection} from '../../services/loadinspection';
 
 class HomeContainer extends React.Component {
@@ -17,9 +17,7 @@ class HomeContainer extends React.Component {
   onLoadDataFromMainThreadrPress = async () => {
     try {
       const inspections = await loadInspection();
-      inspections.forEach(inspection => {
-        createInspection(inspection);
-      });
+      createInspections(inspections);
     } catch (e) {
       console.log(e);
     }
