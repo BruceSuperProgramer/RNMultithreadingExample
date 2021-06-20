@@ -1,5 +1,4 @@
 import React from 'react';
-import nodejs from 'nodejs-mobile-react-native';
 import HomeScreen from './HomeScreen';
 import {createInspection} from '../../modelAction/inspection';
 import {loadInspection} from '../../services/loadinspection';
