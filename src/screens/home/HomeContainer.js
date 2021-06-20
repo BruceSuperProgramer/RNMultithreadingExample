@@ -9,15 +9,29 @@ class HomeContainer extends React.Component {
   onLoadDataFromMainThreadrPress = async () => {
     try {
       const inspections = await loadInspection();
-      await spawnThread(() => {
+
+      const result = await spawnThread(async () => {
         'worklet';
-        database.action(async () => {
-          inspections.forEach(inspection => {
-            const batchInspections = createInspection(inspection);
-            database.batch(batchInspections);
+        console.log('Hello');
+        console.log('inspections.length:', inspections.length);
+
+        try {
+          database.action(async () => {
+            'worklet';
+            inspections.forEach(inspection => {
+              console.log('!!!!!!!!!!!');
+              const batchInspections = createInspection(inspection);
+              database.batch(batchInspections);
+            });
           });
-        });
+        } catch (e) {
+          console.log(e);
+        }
+
+        return 0;
       });
+
+      console.log({result});
 
       // await database.action(async () => {
       //   inspections.forEach(inspection => {
@@ -44,7 +58,6 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <HomeScreen
-        onLoadDataFromWorkerPress={this.onLoadDataFromWorkerPress}
         onLoadDataFromMainThreadrPress={this.onLoadDataFromMainThreadrPress}
       />
     );

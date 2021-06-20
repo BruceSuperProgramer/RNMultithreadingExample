@@ -1,4 +1,4 @@
-const TOTAL_PAGE = 10;
+const TOTAL_PAGE = 1;
 const take = 1000;
 
 const token =

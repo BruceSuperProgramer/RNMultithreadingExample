@@ -2,7 +2,7 @@ import {database} from '../database';
 
 export const createInspection = inspection => {
   'worklet';
-  //   console.log({inspection});
+  console.log({inspection});
   const inspectionsCollection = database.get('inspection');
   try {
     return inspectionsCollection.prepareCreate(inspectionModel => {
