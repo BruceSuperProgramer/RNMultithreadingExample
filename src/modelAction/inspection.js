@@ -1,38 +1,41 @@
 import {database} from '../database';
 
-export const createInspections = async inspections => {
+export const createInspection = inspection => {
+  //   console.log({inspection});
+  const inspectionsCollection = database.get('inspection');
   try {
-    const inspectionsCollection = database.get('inspection');
-
-    await database.action(async () => {
-      inspections.forEach(inspection => {
-        inspectionsCollection.create(inspectionModel => {
-          inspectionModel.referenceNumber = inspection.referenceNumber;
-          inspectionModel.project = inspection.project;
-          inspectionModel.equipmentInduction = inspection.equipmentInduction;
-          inspectionModel.permit = inspection.permit;
-          inspectionModel.description = inspection.description;
-          inspectionModel.inspectionType = inspection.inspectionType;
-          inspectionModel.location = inspection.location;
-          inspectionModel.status = inspection.status;
-          inspectionModel.createdBy = inspection.createdBy;
-          inspectionModel.dateCreated = inspection.dateCreated;
-          inspectionModel.openIssuesCount = inspection.openIssuesCount;
-          inspectionModel.isAdhoc = inspection.isAdhoc;
-          inspectionModel.isCompleted = inspection.isCompleted;
-          inspectionModel.isDeleted = inspection.isDeleted;
-          inspectionModel.isSynced = inspection.isSynced;
-          inspectionModel.employer = inspection.employer;
-          inspectionModel.parentInspection = inspection.parentInspection;
-          inspectionModel.associatedWorkers = inspection.associatedWorkers;
-          inspectionModel.associatedSwms = inspection.associatedSwms;
-          inspectionModel.actionId = inspection.actionId;
-          inspectionModel.additionalInformation =
-            inspection.additionalInformation;
-        });
-      });
-    }, `basicInspectionInsertion-for-${inspection.id}`);
+    return inspectionsCollection.prepareCreate(inspectionModel => {
+      inspectionModel.description = inspection.description;
+      inspectionModel.inspectionType = inspection.inspectionType
+        ? JSON.stringify(inspection.inspectionType)
+        : '';
+      inspectionModel.humanReferenceString = inspection.humanReferenceString;
+      inspectionModel.humanReferenceNumber = inspection.humanReferenceNumber;
+      inspectionModel.project = JSON.stringify(inspection.project);
+      inspectionModel.inspectionDate = inspection.inspectionDate;
+      inspectionModel.dateCompleted = inspection.dateCompleted;
+      inspectionModel.isAdhoc = inspection.isAdhoc;
+      inspectionModel.isCompleted = inspection.isCompleted;
+      inspectionModel.isDeleted = inspection.isDeleted;
+      inspectionModel.adhocUser = inspection.adhocUser
+        ? JSON.stringify(inspection.adhocUser)
+        : '';
+      inspectionModel.walkCreatedByUser = inspection.walkCreatedByUser
+        ? JSON.stringify(inspection.walkCreatedByUser)
+        : '';
+      inspectionModel.location = inspection.location
+        ? JSON.stringify(inspection.location)
+        : '';
+      inspectionModel.employer = inspection.employer
+        ? JSON.stringify(inspection.employer)
+        : '';
+      inspectionModel.lastModifiedDate = inspection.lastModifiedDate;
+      inspectionModel.clientModifiedDate = inspection.clientModifiedDate;
+      inspectionModel.raisedIssueCount = inspection.raisedIssueCount;
+      inspectionModel.openIssueCount = inspection.openIssueCount;
+      inspectionModel.closedIssueCount = inspection.closedIssueCount;
+    });
   } catch (e) {
-    console.log('createInspections error:', e);
+    console.log('createInspection error:', e);
   }
 };

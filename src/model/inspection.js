@@ -1,29 +1,40 @@
 import {Model} from '@nozbe/watermelondb';
-import {field} from '@nozbe/watermelondb/decorators';
+import {field, action} from '@nozbe/watermelondb/decorators';
 
 export default class Inspection extends Model {
   static table = 'inspection';
 
-  @field('referenceNumber') referenceNumber;
-  @field('project') project;
-  @field('equipmentInduction') equipmentInduction;
-  @field('permit') permit;
   @field('description') description;
   @field('inspectionType') inspectionType;
-  @field('location') location;
-  @field('status') status;
-  @field('createdBy') createdBy;
-  @field('dateCreated') dateCreated;
-  @field('openIssuesCount') openIssuesCount;
+  @field('humanReferenceString') humanReferenceString;
+  @field('humanReferenceNumber') humanReferenceNumber;
+  @field('project') project;
+  @field('inspectionDate') inspectionDate;
+  @field('dateCompleted') dateCompleted;
   @field('isAdhoc') isAdhoc;
   @field('isCompleted') isCompleted;
   @field('isDeleted') isDeleted;
-  @field('createdByUserId') createdByUserId;
-  @field('isSynced') isSynced;
+  @field('adhocUser') adhocUser;
+  @field('walkCreatedByUser') walkCreatedByUser;
+  @field('location') location;
   @field('employer') employer;
-  @field('parentInspection') parentInspection;
-  @field('associatedWorkers') associatedWorkers;
-  @field('associatedSwms') associatedSwms;
-  @field('actionId') actionId;
-  @field('additionalInformation') additionalInformation;
+  @field('lastModifiedDate') lastModifiedDate;
+  @field('clientModifiedDate') clientModifiedDate;
+  @field('lastModifiedDate') lastModifiedDate;
+  @field('raisedIssueCount') raisedIssueCount;
+  @field('openIssueCount') openIssueCount;
+  @field('closedIssueCount') closedIssueCount;
+
+  // // NOTE Batch insertion
+  // @action async createInspections(inspection) {
+  //   await this.batch(
+  //     this.prepareUpdate(post => {
+  //       post.title = `7 ways to lose weight`;
+  //     }),
+  //     this.collections.get('comments').prepareCreate(comment => {
+  //       comment.post.set(this);
+  //       comment.body = "Don't forget to comment, like, and subscribe!";
+  //     }),
+  //   );
+  // }
 }
