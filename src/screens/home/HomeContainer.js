@@ -9,27 +9,33 @@ class HomeContainer extends React.Component {
   onLoadDataFromMainThreadrPress = async () => {
     try {
       const inspections = await loadInspection();
-
-      const result = await spawnThread(async () => {
-        'worklet';
-        console.log('Hello');
-        console.log('inspections.length:', inspections.length);
-
-        try {
-          database.action(async () => {
-            'worklet';
-            inspections.forEach(inspection => {
-              console.log('!!!!!!!!!!!');
-              const batchInspections = createInspection(inspection);
-              database.batch(batchInspections);
-            });
-          });
-        } catch (e) {
-          console.log(e);
-        }
-
-        return 0;
+      database.action(async () => {
+        inspections.forEach(inspection => {
+          console.log('!!!!!!!!!!!');
+          const batchInspections = createInspection(inspection);
+          database.batch(batchInspections);
+        });
       });
+      // const result = await spawnThread(async () => {
+      //   'worklet';
+      //   console.log('Hello');
+      //   console.log('inspections.length:', inspections.length);
+
+      //   try {
+      //     database.action(async () => {
+      //       'worklet';
+      //       inspections.forEach(inspection => {
+      //         console.log('!!!!!!!!!!!');
+      //         const batchInspections = createInspection(inspection);
+      //         database.batch(batchInspections);
+      //       });
+      //     });
+      //   } catch (e) {
+      //     console.log(e);
+      //   }
+
+      //   return 0;
+      // });
 
       console.log({result});
 
